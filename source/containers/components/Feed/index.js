@@ -5,10 +5,15 @@ import React, { Component } from 'react';
 import Composer from '../Composer';
 import Post from '../Post';
 
+// Instruments
+import Styles from './styles.m.css';
+
+console.log(Styles);
+
 export default class Feed extends Component {
     render () {
         return (
-            <section>
+            <section className = { Styles.feed }>
                 <Composer />
                 <Post />
             </section>
