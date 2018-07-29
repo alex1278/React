@@ -1,13 +1,20 @@
 // Core
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Components
-import Feed from '../components/Feed';
+import Feed from "../components/Feed";
+
+// Instruments
+import avatar from "../../theme/assets/lisa.png";
+
+const options = {
+    avatar,
+    currentUserFirstName: "Lisa",
+    currentUserLastName:  "Simpson",
+};
 
 export default class App extends Component {
     render () {
-        return (
-            <Feed />
-        );
+        return <Feed { ...options } />;
     }
 }

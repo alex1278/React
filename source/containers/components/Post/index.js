@@ -1,16 +1,22 @@
 // Core
-import React, { Component } from 'react';
-import moment from 'moment';
+import React, { Component } from "react";
+import moment from "moment";
 // Instruments
-import avatar from '../../../theme/assets/lisa.png';
+import Styles from "./styles.m.css";
 
 export default class Post extends Component {
     render () {
+        const {
+            avatar,
+            currentUserFirstName,
+            currentUserLastName,
+        } = this.props;
+
         return (
-            <section>
+            <section className = { Styles.post }>
                 <img src = { avatar } />
-                <a>Lisa Simpson</a>
-                <time>{ moment().format('MMMM D h:mm:ss') }</time>
+                <a>{`${currentUserFirstName} ${currentUserLastName}`}</a>
+                <time>{moment().format("MMMM D h:mm:ss")}</time>
                 <p>Howdy!</p>
             </section>
         );
