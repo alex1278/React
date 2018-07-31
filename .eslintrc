@@ -11,6 +11,7 @@ parserOptions:
 
 plugins:
   - react
+  - prettier
 
 globals:
     __: false

@@ -1,9 +1,12 @@
-import React, { Component } from "react";
+// Core
+import React, { Component } from 'react';
+
 // Instruments
-import Styles from "./styles.m.css";
+import Styles from './styles.m.css';
 
 export default class StatusBar extends Component {
     avatar;
+
     render () {
         const {
             avatar,
@@ -15,9 +18,9 @@ export default class StatusBar extends Component {
             <section className = { Styles.statusBar }>
                 <button>
                     <img src = { avatar } />
-                    <span>{`${currentUserFirstName}`}</span>
+                    <span>{ `${currentUserFirstName}` }</span>
                     &nbsp;
-                    <span>{`${currentUserLastName}`}</span>
+                    <span>{ `${currentUserLastName}` }</span>
                 </button>
             </section>
         );
