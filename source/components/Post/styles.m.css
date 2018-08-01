@@ -52,7 +52,7 @@
     right: 12px;
     width: 10px;
     height: 10px;
-    background: url('../../../theme/assets/cross.png') no-repeat;
+    background: url('../../theme/assets/cross.png') no-repeat;
     cursor: pointer;
 
     &:hover {

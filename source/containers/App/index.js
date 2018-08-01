@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // Components
-import Feed from '../components/Feed';
+import Feed from '../../components/Feed';
 
 // Instruments
 import avatar from '../../theme/assets/lisa.png';
