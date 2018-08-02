@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 // Components
 import Feed from '../../components/Feed';
+import { ProfileContext } from '../../components/HOC/withProfile';
 
 // Instruments
 import avatar from '../../theme/assets/lisa.png';
@@ -15,6 +16,10 @@ const options = {
 
 export default class App extends Component {
     render () {
-        return <Feed { ...options } />;
+        return (
+            <ProfileContext.Provider value = { options }>
+                <Feed />
+            </ProfileContext.Provider>
+        );
     }
 }
