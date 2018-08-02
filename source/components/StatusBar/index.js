@@ -8,7 +8,6 @@ import { ProfileContext } from '../../components/HOC/withProfile';
 import Styles from './styles.m.css';
 
 export default class StatusBar extends Component {
-    avatar;
 
     render () {
         return (
