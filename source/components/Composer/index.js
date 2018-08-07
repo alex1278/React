@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // Components
-import { ProfileContext } from '../../components/HOC/withProfile';
+import { Consumer } from '../../components/HOC/withProfile';
 
 // Instruments
 import Styles from './styles.m.css';
@@ -10,19 +10,20 @@ import Styles from './styles.m.css';
 export default class Composer extends Component {
     render () {
         return (
-            <ProfileContext.Consumer>
+            <Consumer>
                 {(context) => (
                     <section className = { Styles.composer }>
                         <img src = { context.avatar } />
                         <form>
                             <textarea
-                                placeholder = { `What's on your mind, ${context.currentUserFirstName}?` }
+                                placeholder = { `What's on your mind, ${
+                                    context.currentUserFirstName}?` }
                             />
                             <input type = 'submit' value = 'Post' />
                         </form>
                     </section>
                 )}
-            </ProfileContext.Consumer>
+            </Consumer>
         );
     }
 }

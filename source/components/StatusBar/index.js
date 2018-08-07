@@ -2,16 +2,15 @@
 import React, { Component } from 'react';
 
 // Components
-import { ProfileContext } from '../../components/HOC/withProfile';
+import { Consumer } from '../../components/HOC/withProfile';
 
 // Instruments
 import Styles from './styles.m.css';
 
 export default class StatusBar extends Component {
-
     render () {
         return (
-            <ProfileContext.Consumer>
+            <Consumer>
                 {(context) => (
                     <section className = { Styles.statusBar }>
                         <button>
@@ -22,7 +21,7 @@ export default class StatusBar extends Component {
                         </button>
                     </section>
                 )}
-            </ProfileContext.Consumer>
+            </Consumer>
         );
     }
 }

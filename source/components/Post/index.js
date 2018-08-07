@@ -4,7 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 // Components
-import { ProfileContext } from '../../components/HOC/withProfile';
+import { Consumer } from '../../components/HOC/withProfile';
 
 // Instruments
 import Styles from './styles.m.css';
@@ -17,10 +17,8 @@ export default class Post extends Component {
     render () {
         const { comment, created } = this.props;
 
-        console.log(comment);
-
         return (
-            <ProfileContext.Consumer>
+            <Consumer>
                 {(context) => (
                     <section className = { Styles.post }>
                         <img src = { context.avatar } />
@@ -33,7 +31,7 @@ export default class Post extends Component {
                         <p>{comment}</p>
                     </section>
                 )}
-            </ProfileContext.Consumer>
+            </Consumer>
         );
     }
 }

@@ -1,4 +1,4 @@
 // Core
 import { createContext } from 'react';
 
-export const ProfileContext = createContext();
+export const { Provider, Consumer } = createContext();
