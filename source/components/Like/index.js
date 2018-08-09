@@ -71,8 +71,7 @@ export default class Like extends Component {
 
     _getLikersList () {
         const { showLikers } = this.state;
-        const { likes } = this.state;
-        console.log('this.state', this.state);
+        const { likes } = this.props;
 
         const likesJSX = likes.map(({ firstName, lastName, id }) => (
             <li key = { id }>{`${firstName} ${lastName}`}</li>
