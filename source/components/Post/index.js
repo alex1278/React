@@ -1,21 +1,25 @@
 // Core
 import React, { Component } from 'react';
 import moment from 'moment';
-import PropTypes from 'prop-types';
+import { func, string, number, array } from 'prop-types';
 
 // Components
 import { Consumer } from '../../components/HOC/withProfile';
+import Like from '../../components/Like';
 
 // Instruments
 import Styles from './styles.m.css';
 
 export default class Post extends Component {
     static propTypes = {
-        comment: PropTypes.string.isRequired,
-        created: PropTypes.number.isRequired,
+        _likePost: func.isRequired,
+        comment:   string.isRequired,
+        created:   number.isRequired,
+        id:        string.isRequired,
+        likes:     array.isRequired,
     };
     render () {
-        const { comment, created } = this.props;
+        const { comment, created, _likePost, id, likes } = this.props;
 
         return (
             <Consumer>
@@ -29,6 +33,7 @@ export default class Post extends Component {
                             {moment.unix(created).format('MMMM D h:mm:ss')}
                         </time>
                         <p>{comment}</p>
+                        <Like _likePost = { _likePost } id = { id } likes = { likes } { ...context } />
                     </section>
                 )}
             </Consumer>
