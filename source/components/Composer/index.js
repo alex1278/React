@@ -1,5 +1,6 @@
 // Core
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Components
 import { Consumer } from '../../components/HOC/withProfile';
@@ -8,7 +9,17 @@ import { Consumer } from '../../components/HOC/withProfile';
 import Styles from './styles.m.css';
 
 export default class Composer extends Component {
+    static propTypes = {
+        _createPost: PropTypes.func.isRequired,
+    };
+
+    state = {
+        comment: '',
+    };
+
     render () {
+        const { comment } = this.state;
+
         return (
             <Consumer>
                 {(context) => (
@@ -16,8 +27,8 @@ export default class Composer extends Component {
                         <img src = { context.avatar } />
                         <form>
                             <textarea
-                                placeholder = { `What's on your mind, ${
-                                    context.currentUserFirstName}?` }
+                                placeholder = { `What's on your mind, ${context.currentUserFirstName}?` }
+                                value = { comment }
                             />
                             <input type = 'submit' value = 'Post' />
                         </form>
