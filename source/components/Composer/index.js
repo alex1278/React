@@ -52,7 +52,6 @@ export default class Composer extends Component {
     }
 
     _submitOnEnter (event) {
-        console.log('event.key', event.key);
         const enterKey = event.key === 'Enter';
 
         if (enterKey) {
