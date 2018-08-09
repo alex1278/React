@@ -18,7 +18,7 @@ export default class Feed extends Component {
         this._createPost = this._createPost.bind(this);
         this._setPostFetchingState = this._setPostFetchingState.bind(this);
         this._likePost = this._likePost.bind(this);
-        this._deletePost = this._deletePost.bind(this);
+        this._removePost = this._removePost.bind(this);
     }
 
     state = {
@@ -63,7 +63,7 @@ export default class Feed extends Component {
         }));
     }
 
-    async _deletePost (id) {
+    async _removePost (id) {
         this._setPostFetchingState(true);
 
         const { posts } = this.state;
@@ -115,8 +115,8 @@ export default class Feed extends Component {
             return (<Post
                 key = { post.id }
                 { ...post }
-                _deletePost = { this._deletePost }
                 _likePost = { this._likePost }
+                _removePost = { this._removePost }
             />);
         });
 
