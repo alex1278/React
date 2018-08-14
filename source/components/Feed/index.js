@@ -13,12 +13,6 @@ import Styles from './styles.m.css';
 import { getUniqueID, delay } from "../../instruments";
 
 export default class Feed extends Component {
-    constructor () {
-        super();
-        this._createPost = this._createPost.bind(this);
-        this._setPostFetchingState = this._setPostFetchingState.bind(this);
-        this._likePost = this._likePost.bind(this);
-    }
 
     state = {
         posts: [
@@ -38,13 +32,13 @@ export default class Feed extends Component {
         isPostsFetching: false,
     };
 
-    _setPostFetchingState (state) {
+    _setPostFetchingState = (state) => {
         this.setState({
             isPostsFetching: state,
         });
-    }
+    };
 
-    async _createPost (comment) {
+    _createPost = async (comment) => {
         this._setPostFetchingState(true);
 
         const post = {
@@ -60,9 +54,25 @@ export default class Feed extends Component {
             posts:           [post, ...posts],
             isPostsFetching: false,
         }));
-    }
+    };
 
-    async _likePost (id) {
+    _removePost = async (id) => {
+        this._setPostFetchingState(true);
+
+        const { posts } = this.state;
+        const newPosts = posts.filter((post) => {
+            return post.id !== id;
+        });
+
+        await delay(1200);
+
+        this.setState(() => ({
+            posts:           [...newPosts],
+            isPostsFetching: false,
+        }));
+    };
+
+    _likePost = async (id) => {
         const { currentUserFirstName, currentUserLastName } = this.props;
 
         this._setPostFetchingState(true);
@@ -90,12 +100,17 @@ export default class Feed extends Component {
             posts:           newPosts,
             isPostsFetching: false,
         });
-    }
+    };
 
     render () {
         const { posts, isPostsFetching } = this.state;
-        const PostJSX = posts.map((post) => {
-            return <Post key = { post.id } { ...post } _likePost = { this._likePost } />;
+        const postJSX = posts.map((post) => {
+            return (<Post
+                key = { post.id }
+                { ...post }
+                _likePost = { this._likePost }
+                _removePost = { this._removePost }
+            />);
         });
 
         return (
@@ -103,7 +118,7 @@ export default class Feed extends Component {
                 <Spinner isSpinning = { isPostsFetching } />
                 <StatusBar />
                 <Composer _createPost = { this._createPost } />
-                {PostJSX}
+                {postJSX}
             </section>
         );
     }
