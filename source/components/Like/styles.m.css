@@ -25,9 +25,7 @@
       left: -2px;
       width: 18px;
       height: 18px;
-      background-image: url('../../theme/assets/like.png');
-      background-repeat: no-repeat;
-      background-position: 0 -18px;
+      background: url('../../theme/assets/like.png') no-repeat 0 -19px;
       background-size: 18px;
     }
   }
@@ -71,13 +69,12 @@
         content: '';
         display: block;
         position: absolute;
-        top: 3px;
+        top: 50%;
         left: 3px;
         width: 18px;
         height: 19px;
-        background-image: url('../../theme/assets/like.png');
-        background-repeat: no-repeat;
-        background-position: 0 -37px;
+        margin-top: -9px;
+        background: url('../../theme/assets/like.png') no-repeat 0 -38px;
         background-size: 18px;
       }
 
