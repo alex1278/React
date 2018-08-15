@@ -13,13 +13,6 @@ import Styles from './styles.m.css';
 import { getUniqueID, delay } from "../../instruments";
 
 export default class Feed extends Component {
-    constructor () {
-        super();
-        this._createPost = this._createPost.bind(this);
-        this._setPostFetchingState = this._setPostFetchingState.bind(this);
-        this._likePost = this._likePost.bind(this);
-        this._removePost = this._removePost.bind(this);
-    }
 
     state = {
         posts: [
@@ -39,13 +32,13 @@ export default class Feed extends Component {
         isPostsFetching: false,
     };
 
-    _setPostFetchingState (state) {
+    _setPostFetchingState = (state) => {
         this.setState({
             isPostsFetching: state,
         });
-    }
+    };
 
-    async _createPost (comment) {
+    _createPost = async (comment) => {
         this._setPostFetchingState(true);
 
         const post = {
@@ -61,9 +54,9 @@ export default class Feed extends Component {
             posts:           [post, ...posts],
             isPostsFetching: false,
         }));
-    }
+    };
 
-    async _removePost (id) {
+    _removePost = async (id) => {
         this._setPostFetchingState(true);
 
         const { posts } = this.state;
@@ -77,9 +70,9 @@ export default class Feed extends Component {
             posts:           [...newPosts],
             isPostsFetching: false,
         }));
-    }
+    };
 
-    async _likePost (id) {
+    _likePost = async (id) => {
         const { currentUserFirstName, currentUserLastName } = this.props;
 
         this._setPostFetchingState(true);
@@ -107,11 +100,11 @@ export default class Feed extends Component {
             posts:           newPosts,
             isPostsFetching: false,
         });
-    }
+    };
 
     render () {
         const { posts, isPostsFetching } = this.state;
-        const PostJSX = posts.map((post) => {
+        const postJSX = posts.map((post) => {
             return (<Post
                 key = { post.id }
                 { ...post }
@@ -125,7 +118,7 @@ export default class Feed extends Component {
                 <Spinner isSpinning = { isPostsFetching } />
                 <StatusBar />
                 <Composer _createPost = { this._createPost } />
-                {PostJSX}
+                {postJSX}
             </section>
         );
     }
