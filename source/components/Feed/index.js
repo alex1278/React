@@ -6,11 +6,11 @@ import StatusBar from '../StatusBar';
 import Composer from '../Composer';
 import Post from '../Post';
 import Spinner from '../Spinner';
-import moment from "moment";
+import moment from 'moment';
 
 // Instruments
 import Styles from './styles.m.css';
-import { getUniqueID, delay } from "../../instruments";
+import { getUniqueID, delay } from '../../instruments';
 
 export default class Feed extends Component {
 
