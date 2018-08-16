@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // Components
-import { withProfile } from "../HOC/withProfile";
+import { withProfile } from '../HOC/withProfile';
 
 import StatusBar from '../StatusBar';
 import Composer from '../Composer';
@@ -121,7 +121,7 @@ export default class Feed extends Component {
                 <Spinner isSpinning = { isSpinning } />
                 <StatusBar />
                 <Composer _createPost = { this._createPost } />
-                {postJSX}
+                { postJSX }
             </section>
         );
     }

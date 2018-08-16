@@ -18,7 +18,7 @@ export default class Like extends Component {
                 id:        string.isRequired,
                 firstName: string.isRequired,
                 lastName:  string.isRequired,
-            })
+            }),
         ).isRequired,
     };
 
@@ -68,10 +68,10 @@ export default class Like extends Component {
         const { likes } = this.props;
 
         const likesJSX = likes.map(({ firstName, lastName, id }) => (
-            <li key = { id }>{`${firstName} ${lastName}`}</li>
+            <li key = { id }>{ `${firstName} ${lastName}` }</li>
         ));
 
-        return likes.length && showLikers ? <ul>{likesJSX}</ul> : null;
+        return likes.length && showLikers ? <ul>{ likesJSX }</ul> : null;
     };
 
     _getLikesDescription = () => {
@@ -81,9 +81,9 @@ export default class Like extends Component {
         if (likes.length === 1 && likedByMe) {
             return `${currentUserFirstName} ${currentUserLastName}`;
         } else if (likes.length === 2 && likedByMe) {
-            return `You and ${likes.length -1} others`;
+            return `You and ${likes.length - 1} others`;
         } else if (likedByMe) {
-            return `You and ${likes.length -1} others`;
+            return `You and ${likes.length - 1} others`;
         }
 
         return likes.length;
@@ -98,11 +98,11 @@ export default class Like extends Component {
             <section className = { Styles.like }>
                 <span className = { likeStyles } onClick = { this._likePost }>Like</span>
                 <div>
-                    {likersList}
+                    { likersList }
                     <span
                         onMouseEnter = { this._showLikers }
                         onMouseLeave = { this._hideLikers }>
-                        {likesDescription}
+                        { likesDescription }
                     </span>
                 </div>
             </section>
