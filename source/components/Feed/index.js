@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // Components
-import { withProfile } from "../HOC/withProfile";
+import { withProfile } from '../HOC/withProfile';
 
 import StatusBar from '../StatusBar';
 import Catcher from '../../components/Catcher';
@@ -16,7 +16,6 @@ import { api, TOKEN } from '../../config/api';
 
 @withProfile
 export default class Feed extends Component {
-
     state = {
         posts:      [],
         isSpinning: false,
@@ -53,8 +52,8 @@ export default class Feed extends Component {
         const response = await fetch(api, {
             method:  'POST',
             headers: {
-                'Content-Type':  'application/json',
-                'Authorization': TOKEN,
+                'Content-Type': 'application/json',
+                Authorization:  TOKEN,
             },
             body: JSON.stringify({ comment }),
         });
@@ -73,7 +72,7 @@ export default class Feed extends Component {
         await fetch(`${api}/${id}`, {
             method:  'DELETE',
             headers: {
-                'Authorization': TOKEN,
+                Authorization: TOKEN,
             },
         });
 
@@ -89,7 +88,7 @@ export default class Feed extends Component {
         const response = await fetch(`${api}/${id}`, {
             method:  'PUT',
             headers: {
-                'Authorization': TOKEN,
+                Authorization: TOKEN,
             },
         });
 
@@ -97,7 +96,7 @@ export default class Feed extends Component {
 
         this.setState(({ posts }) => ({
             posts: posts.map(
-                (post) => post.id === likedPost.id ? likedPost : post
+                (post) => post.id === likedPost.id ? likedPost : post,
             ),
             isSpinning: false,
         }));
