@@ -5,6 +5,8 @@ settings:
   ecmascript: 6
   flowtype:
     onlyFilesWithFlowAnnotation: false
+  react:
+    version: "16.4.2"
 
 parserOptions:
     sourceType: "module"
