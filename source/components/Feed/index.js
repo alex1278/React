@@ -34,7 +34,6 @@ export default class Feed extends Component {
         socket.on('create', (postJSON) => {
             const { data: createdPost, meta } = JSON.parse(postJSON);
 
-            console.log('create', JSON.parse(postJSON));
             if (
                 `${currentUserFirstName} ${currentUserLastName}` !==
                 `${meta.authorFirstName} ${meta.authorLastName}`
@@ -165,6 +164,22 @@ export default class Feed extends Component {
             { opacity: 1, rotationX: 0 });
     };
 
+    _animatePostmanEnter = (postman) => {
+        TweenLite.fromTo(
+            postman,
+            1,
+            { right: -260 },
+            { right: 30 });
+    };
+
+    _animatePostmanEntered = (postman) => {
+        TweenLite.fromTo(
+            postman,
+            1,
+            { right: 30 },
+            { right: -260 });
+    };
+
     render () {
         const { posts, isSpinning } = this.state;
         const postJSX = posts.map((post) => {
@@ -190,7 +205,14 @@ export default class Feed extends Component {
                     onEnter = { this._animateComposerEnter }>
                     <Composer _createPost = { this._createPost } />
                 </Transition>
-                <Postman />
+                <Transition
+                    appear
+                    in
+                    timeout = { 4000 }
+                    onEnter = { this._animatePostmanEnter }
+                    onEntered = { this._animatePostmanEntered }>
+                    <Postman />
+                </Transition>
                 { postJSX }
             </section>
         );
