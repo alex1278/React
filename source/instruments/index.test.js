@@ -49,7 +49,7 @@ describe('instruments:', () => {
     });
 
     test('getFullApiUrl function should throw, when called with non-string type as second argument', () => {
-        expect(() => getFullApiUrl('привет', 2)).toThrow();
+        expect(() => getFullApiUrl('привет', { name: "ivan" })).toThrow();
     });
 
     test('getFullApiUrl function should return an FullApiUrl', () => {
